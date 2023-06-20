@@ -1,0 +1,53 @@
+server:
+  port: 8099
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project2
+    username: root
+    password: 비밀번호
+
+#    CI/CD용 EC2 DB
+#    url: jdbc:mysql://ec2-mysql-db1.c6l0kqlbscuy.ap-northeast-2.rds.amazonaws.com:3306/project2
+#    username: user1
+#    password: ghdfhr1579
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+
+      #CI/CD용
+      format_sql : true
+
+      ddl-auto: update
+    #로컬용
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+  thymeleaf:
+    cache: false
+#    check-template-location: true
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    enabled: true
+
+  profiles:
+    include: oauth
+
+navar.api.client-id: H8paKKaUOVv57BJBdBm9
+navar.api.client-secret: 비밀번호
+
+# CI/CD 로그
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

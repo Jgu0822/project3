@@ -1,0 +1,61 @@
+@import url(../common/reset.css);
+@import url(../common/adminHeader.css);
+@import url(../common/leftMenu.css);
+
+      #wrap{
+        width: 100%;
+        /* border: 5px solid #000000; */
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 50px;
+        /* gap: 5px; */
+     }
+     .bus{
+           flex: 1;
+           height: auto;
+           box-sizing: border-box;
+           background-color: #ffffff;
+          /* border-top: 1px solid #000000;*/
+           /* border: 1px solid #ffff00; */
+           padding: 30px;
+           padding-left: 330px;
+     }
+     .bus .bus-con{
+       /* border: 1px solid purple; */
+       height: 800px;
+       padding: 100px 100px;
+       display: block;
+     }
+     .bus .bus-con .bus-header h1{
+       padding-bottom: 35px;
+       background-color: #000000;
+       color: #ffffff;
+       font-size: 25px;
+       padding: 5px;
+       /* border: 1px solid #000000; */
+     }
+     table{
+            width: 100%;
+     }
+    th, td{
+            border: 1px solid;
+     }
+    .bus .bus-con .map-con{
+            display: flex;
+            justify-content: space-between;
+            gap:5px;
+            max-height:80vh;
+            overflow-y: auto;
+    }
+    .bus .bus-con .map-con .stationNm{
+            flex:1;
+            position:sticky;
+            top:0;
+            max-height:50vh;
+            overflow-y: auto;
+    }
+   #mapview{
+         flex:7
+   }
+

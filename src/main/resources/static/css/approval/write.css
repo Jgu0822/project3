@@ -1,0 +1,120 @@
+@import url(../common/reset.css);
+@import url(../common/adminHeader.css);
+@import url(../common/leftMenu.css);
+
+.container{
+  width: 100%;
+  /* border: 5px solid #000000; */
+  padding-top: 50px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content:space-between;
+  /* gap: 5px; */
+
+  /* margin-left: 310px */
+}
+
+.container .approvalWrite h2{
+  /* width: 500px; */
+
+  text-align: left;
+  /* padding: 30px 20px; */
+  padding: 5px;
+
+  background-color: black;
+  color: #ffffff;
+}
+
+.container .approvalWrite{
+  /* border: 1px solid #ffff00; */
+  flex: 1;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #ffffff;
+
+  padding: 30px;
+  padding-left: 330px;
+
+  /* margin: 10px 10px; */
+}
+
+.container .approvalWrite .con{
+  box-shadow: 5px 5px 5px 1px grey;
+}
+
+.container .approvalWrite form{
+  height: auto;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  align-items: center;
+}
+
+.container .approvalWrite ul{
+  border: 1px solid #4d4d4d3a;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container .approvalWrite ul li{
+  /* border: 1px solid #00ff00; */
+  padding: 10px 10px;
+  /* border-bottom: 1px solid #222; */
+}
+
+.container .approvalWrite ul li label{
+  padding: 10px;
+  gap: 10px;
+
+  flex: 1;
+
+  font-size: 18px;
+  height: 33px;
+
+  text-align: center;
+}
+
+.container .approvalWrite ul li input{
+  padding: 5px 10px;
+
+  flex: 3;
+
+  box-sizing: border-box;
+  border: 1px solid #525252;
+}
+
+.container .approvalWrite ul li.submit{
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.container .approvalWrite ul li.submit input{
+  flex: 1;
+  background-color: black;
+  color: #ffffff;
+
+  text-align: center;
+
+  padding: 15px;
+  margin: 5px;
+}
+
+.container .approvalWrite ul li.content textarea{
+  padding: 10px;
+  margin: 10px;
+}
+
+.container .approvalWrite ul li.submit a{
+  flex: 1;
+  background-color: black;
+  color: #ffffff;
+
+  padding: 10px;
+  margin: 5px;
+}

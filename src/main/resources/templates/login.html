@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KICKOFF</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+    <div class="wrap">
+        <div class="login">
+<!--            <h1>Sign In</h1>-->
+            <h1>로그인</h1>
+            <form th:action="loginOk" method="post" >
+                <div class="login-form">
+                    <ul>
+                        <li>
+                            <h4>이메일</h4>
+                            <input type="text" class="mEmail" name="mEmail" placeholder="example@gmail.com">
+                        </li>
+                        <li class="s1">
+                            <h4>비밀번호</h4>
+                            <input type="password" class="mPw" name="mPw" placeholder="비밀번호를 입력해주세요">
+                        </li>
+                    </ul>
+                    <input class="submit" type="submit" value="로그인">
+                </div>
+                <div class="side-Menu">
+                    <button><a th:href="@{/join}">회원가입</a></button>
+                </div>
+                <div class="oauth">
+                    <a th:href="@{/oauth2/authorization/google}"><img th:src=@{/img/google.png} alt="google" class="google-img" style="border-radius: 20px;"></a>
+                    <a th:href="@{/oauth2/authorization/naver}"><img th:src=@{/img/naver.png} alt="naver" class="naver-img"></a>
+                    <a th:href="@{/oauth2/authorization/kakao}"><img th:src=@{/img/kakao.png} alt="kakao" class="kakao-img"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KICKOFF</title>
+    <link rel="stylesheet" th:href="@{/css/weather/weather.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=96b6c723c566577f55f44d60abc9082a"></script>
+    <script th:src="@{/js/weather/weather2.js}" defer></script>
+    <!-- <style>
+        .box{
+            width: 500px;
+            height: 300px;
+            display: flex;
+        }
+    </style> -->
+
+</head>
+
+<body>
+<div th:replace="~{fragment/common/adminHeader :: adminHeaderFragment}"></div>
+<div class="wrap">
+    <div th:replace="~{fragment/common/leftMenu :: leftMenuFragment}"></div>
+    <div class="weather2">
+<!--        <p style="margin-top:-12px">-->
+<!--            <em class="link">-->
+<!--                <a href="https://apis.map.kakao.com/web/documentation/#MapTypeId" target="_blank">지도 타입을 보시려면 여기를 클릭하세요!</a>-->
+<!--            </em>-->
+<!--        </p>-->
+<!--        <h1>openweather API</h1>-->
+        <div class="weather-con">
+            <h2>지역별 날씨 검색</h2>
+            <div class="con">
+                <div class="box">
+                    <div class="city">
+                        <select name="city2" id="city2">
+                            <option value="Seoul">서울</option>
+                            <option value="Busan">부산</option>
+                            <option value="Gwangju">광주</option>
+                            <option value="Daejeon">대전</option>
+                            <option value="Jeju">제주</option>
+                        </select>
+                        <input type="button" onclick="weatherFn()" value="검색">
+                    </div>
+                    <div class="status">
+                        <div class="con1">
+                            <div class="temp2"></div>
+                            <div class="icon2"></div>
+                            <div class="description2"></div>
+                        </div>
+                        <div class="con2">
+                            <div class="maxTemp2"></div>
+                            <div class="minTemp2"></div>
+                            <div class="humidity2"></div>
+                            <div class="wind2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-con">
+                    <div id="map" style="width:430px;height:430px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>공공데이터포털 버스 API</title>
+    <link rel="stylesheet" th:href="@{/css/bus/busIndex.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script th:src="@{/js/bus/busIndex.js}" defer></script>
+
+</head>
+
+<body>
+<div th:replace="~{fragment/common/adminHeader :: adminHeaderFragment}"></div>
+<div id="wrap">
+    <div th:replace="~{fragment/common/leftMenu :: leftMenuFragment}"></div>
+    <div class="bus">
+        <div class="bus-con">
+            <div class="bus-header">
+                <h1>공공데이터포털 버스 API</h1>
+                <input type="text" name="search" id="search" placeholder="노선(버스)번호를 입력하세요">
+                <input type="button" value="버스노선검색"
+                       onclick="busSearch()">
+                <button>
+                    <a th:href="@{https://cors-anywhere.herokuapp.com/corsdemo}">CORS처리</a>
+                </button>
+            </div>
+            <div class="bus-detail">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>노선명</th>
+                        <th>노선유형</th>
+                        <th>노선거점</th>
+                        <th>노선종점</th>
+                        <th>첫차시간</th>
+                        <th>막차시간</th>
+                        <th>배차간격</th>
+                        <th>정류장정보조회</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="map-con">
+                <div class="stationNm">
+                </div>
+                <div id="mapview" style="width:100px; height: 500px; "></div>
+                <script type="text/javascript"
+                        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56636de0137b086887bf183725e64d3c"></script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

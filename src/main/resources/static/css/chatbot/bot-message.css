@@ -1,0 +1,9 @@
+@import url(../css/common/reset.css);
+
+.chatBus-detail table{
+  font-size: 10px;
+}
+
+.chatBus-detail table thead tr th{
+  width: 70px;
+}

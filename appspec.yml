@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+
+#source: 인스턴스에 복사할 수정된 파일 또는 디렉터리
+#  - 해당 경로는 appspec.yml 파일 기준 상태경로입니다.
+#destination: 인스턴스에서 파일이 복사되어야 하는 위치를 식별합니다.
+
+files:
+  - source: /
+    destination: /home/ec2-user/cicd_projectex/
+permissions:
+  - object: /home/ec2-user/cicd_projectex/
+    owner: ec2-user
+    group: ec2-user
+    mode: 755
+
+hooks:
+  AfterInstall:
+    - location: scripts/deploy.sh
+      timeout: 60
+      runas: ec2-user

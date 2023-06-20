@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KICKOFF</title>
+    <link rel="stylesheet" th:href="@{/css/calendar/teamSchedule/teamScheduleView.css}">
+</head>
+<body>
+<div th:replace="~{fragment/common/adminHeader :: adminHeaderFragment}"></div>
+<div id="wrap">
+    <div th:replace="~{fragment/common/leftMenu :: leftMenuFragment}"></div>
+
+<div class="right-menu">
+
+      <div class="con">
+          <h2>My team Schedule</h2>
+  <div class="right-con">
+          <div class="notice">
+              <h2>자세히보기</h2>
+    <div class="con2">
+
+      <table border="1" class="listTable">
+        <tr class="tHeader">
+
+          <th>근태아이디</th>
+          <th>일정 내용</th>
+          <th>출근 시간</th>
+          <th>퇴근 시간</th>
+          <th>완료 여부</th>
+          <th>회원 아이디</th>
+
+        </tr>
+        <tr class="tBody">
+            <td th:text="${teamScheduleDto.scheduleId}"></td>
+            <td th:text="${teamScheduleDto.content}"></td>
+            <td th:text="${#temporals.format(teamScheduleDto.start, 'yyyy-MM-dd HH:mm:ss')}" ></td>
+            <td th:text="${#temporals.format(teamScheduleDto.end, 'yyyy-MM-dd HH:mm:ss')}" ></td>
+            <td th:text="${teamScheduleDto.scheduleDone}"></td>
+            <td th:text="${teamScheduleDto.mId}"></td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+  </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

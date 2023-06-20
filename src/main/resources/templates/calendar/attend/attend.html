@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KICKOFF</title>
+    <link rel="stylesheet" th:href="@{/css/calendar/attend/attend.css}">
+
+</head>
+<body>
+<div th:replace="~{fragment/common/adminHeader :: adminHeaderFragment}"></div>
+<div id="wrap">
+    <div th:replace="~{fragment/common/leftMenu :: leftMenuFragment}"></div>
+
+    <div class="right-menu">
+        <div class="con">
+            <h2>출석 관리</h2>
+        <div class="right-con">
+
+            <div class="notice">
+                <h2>출퇴근 찍기</h2>
+                <div class="con2">
+<a th:if="${check==1}" href="/attend/goWork" class="attendButtonA">참석</a>
+<a th:unless="${check==1}" href="/attend/goHome" class="attendButtonB">퇴근</a>
+                </div>
+                </div>
+
+            <div class="notice">
+                <h2>출석 내역</h2>
+            <div class="con2">
+<a href="/attend/myAttendancePaging" class="attendButtonC">참석 현황</a> <br>
+<a href="/attend/allAttendancePaging" class="attendButtonC" sec:authorize="hasRole('ADMIN')">팀 출퇴근 내역</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

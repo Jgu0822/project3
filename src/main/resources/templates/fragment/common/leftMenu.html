@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/static/css/common/leftMenu.css">
+<link rel="stylesheet" th:href="@{/static/css/common/chat-bot.css}">
+
+<div class="left-menu" th:fragment="leftMenuFragment">
+    <!--챗봇 -->
+    <script th:src="@{/js/chat.js}"></script>
+    <!-- 날씨 -->
+    <th:block th:if="${key} == null">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" defer></script>
+    </th:block>
+        <script th:src="@{/js/weather.js}" defer></script>
+        <div class="left-con">
+            <div class="dash-board">
+                <!-- <h1 class="title">대시보드</a></h1> -->
+                <div class="weather">
+                    <div class="title">
+                        <span class="nowtime"></span>
+                        <span class="cityName"></span>
+                    </div>
+                    <div class="desc">
+                        <h3 class="icon"></h3>
+                        <div class="today">
+                            <h3 class="weatherDesc"></h3>
+                            <h2 class="nowTemp"> </h2>
+                        </div>
+                    </div>
+                    <div class="temp">
+                        <h4 class="maxTemp"></h4>
+                        <h4>/ </h4>
+                        <h4 class="minTemp"></h4>
+                    </div>
+                    <div class="search">
+                        <select name="city" id="city">
+                            <option value="seoul">서울</option>
+                            <option value="incheon">인천</option>
+                            <option value="chuncheon">춘천</option>
+                            <option value="daejeon">대전</option>
+                            <option value="gwangju">광주</option>
+                            <option value="busan">부산</option>
+                            <option value="jeju">제주</option>
+                        </select>
+                        <input type="button" value="날씨조회" onclick="searchCity()">
+                    </div>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <a href="#">회원정보</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/member/detail}">회원상세</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/member/update}">회원수정</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/member/myBoardList}">작성글 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">일정관리</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/attend/attend}">근태 관리</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/memberSchedule/memberSchedule}">개인일정 관리</a>
+                                </li>
+<!--                                <li sec:authorize="hasRole('ADMIN')">-->
+                                <li>
+                                    <a th:href="@{/teamSchedule/teamSchedule}">공식일정 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">결재관리</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/approval/write}">결재서류 작성</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/approval/list}">결재서류 리스트</a>
+                                </li>
+                                <li>
+                                    <!-- <a th:href="@{/approval/listUpdate}">결재서류 수정</a>-->
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">조직관리</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/member/management}">팀조회</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/member/managementPlace}">팀배치</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">회계관리</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/account/list}">수입지출 내역</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">동호회게시판</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/board/boardInsert}">게시글추가</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/board/boardList}">게시글조회</a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="">공지사항</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/notice/noticeInsert}">공지사항추가</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/notice/noticePage}">공지사항조회</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="">NAVER API</a>
+                            <ul class="sub">
+                                <li>
+                                    <a href="https://kickoff.ncpworkplace.com/v/home/">Naver login</a>
+                                </li>
+                                <li>
+                                    <form action="https://auth.worksmobile.com/oauth2/v2.0/authorize" method="get">
+                                        <input type="hidden" name="client_id" value="H8paKKaUOVv57BJBdBm9">
+                                        <input type="hidden" name="redirect_uri" value="http://localhost:8099/naver/auth2">
+                                        <input type="hidden" name="scope" value="directory,directory.read,orgunit,orgunit.read">
+                                        <input type="hidden" name="response_type" value="code">
+                                        <input type="hidden" name="state" value="test">
+                                        <button>조직인증</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form id="mail" onsubmit="window.open('https://mail.worksmobile.com/write/popup', '_blank', 'width=600, height=400,resizeable,scrollbars');" >
+					                    <button>메일연동</button>
+				                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Open API</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/movie/todaymovie}">영화 API</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/bus/index}">버스 API</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/weather/index}">날씨 API</a>
+                                </li>
+                            </ul>
+                        </li>
+<!--                        <li sec:authorize="hasRole('ADMIN')">-->
+                        <li>
+                            <a href="#">관리자 메뉴</a>
+                            <ul class="sub">
+                                <li>
+                                    <a th:href="@{/member/memberList}">회원 관리</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/board/adminNoticeList}">공지사항 관리</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/board/adminBoardList}">게시판 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- ChatBot -->
+                        <div class="bot-con">
+                            <div class="chat-bot">
+                                <div class="wrap">
+                                    <img th:src="@{/img/icon/chatbot.png}" id="btn-chat-open" onclick="openChat()">
+                                    <th:block th:insert="~{chatbot/chat-bot::#chat-disp}" />
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KICKOFF</title>
+    <link rel="stylesheet" th:href="@{/css/calendar/attend/allAttendPaging.css}">
+
+</head>
+<body>
+<div th:replace="~{fragment/common/adminHeader :: adminHeaderFragment}"></div>
+<div id="wrap">
+    <div th:replace="~{fragment/common/leftMenu :: leftMenuFragment}"></div>
+<div class="right-menu">
+    <div class="con">
+        <h2>출석 관리</h2>
+    <div class="right-con">
+
+        <div class="notice">
+        <h2>회원 참석 내역</h2>
+
+        <div class="con2">
+
+            <table>
+                <thead>
+                <!-- 변경가능 -->
+<!--                <tr class="search">-->
+<!--                    <th colspan="5">-->
+<!--                        <form th:action="@{/attend/allAttendancePaging}" method="get">-->
+<!--                            <input type="text" name="search" id="search">-->
+<!--                            <input type="submit" value="검색">-->
+<!--                        </form>-->
+<!--                    </th>-->
+<!--                </tr>-->
+                <tr class="title">
+<!--                    <th colspan="3">회원목록</th>-->
+                </tr>
+                <!-- 변경가능 -->
+                <tr>
+                    <th>내 아이디</th>
+                    <!--              <th>비빌번호</th>-->
+                    <th>출석 날짜</th>
+                    <th>퇴근 날짜</th>
+                    <th sec:authorize="hasRole('ADMIN')">근태 내역 수정</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <!--memberList th.each-->
+                <tr th:each="attendDto: ${attendDtoPage}">
+                    <form th:action="@{/attend/attendanceDetail}" method="post" th:object="${attendDto}">
+                        <input type="text" id="attendId" name="attendId" th:value="${attendDto.attendId}" hidden="hidden">
+                    <td th:text="${attendDto.email}"></td>
+                    <td th:text="${#temporals.format(attendDto.attendStart, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:if="${attendDto.attendEnd}==null"  style="color:red">퇴근을 찍지 않았습니다</td>
+                    <td th:unless="${attendDto.attendEnd}==null" th:text="${#temporals.format(attendDto.attendEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <!--             <td th:text="${member.password}"></td>-->
+                        <td sec:authorize="hasRole('ADMIN')"><input type="submit" value="자세히 보기"></td>
+                    <!--<td><a th:href="@{/member/detail(id=${member.id}}">보기</a></td>-->
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="paging">
+                <ul>
+                    <li>
+                        <span th:if="${1 == attendDtoPage.pageable.pageNumber+1}"  style="color:darkgrey   ">START</span>
+                        <a th:unless="${1 == attendDtoPage.pageable.pageNumber+1}"
+                           style="color:black" th:href="@{/attend/allAttendancePaging(page=0)}">처음</a>
+                        &nbsp
+                    </li>
+
+                    <li>
+                        <span th:if="${1 == attendDtoPage.pageable.pageNumber+1}"  style="color:darkgrey   ">이전</span>
+                        <a th:unless="${1 == attendDtoPage.pageable.pageNumber+1}"   style="color:black"
+                           th:href="@{/attend/allAttendancePaging(page=${ attendDtoPage.pageable.pageNumber - 1})}">이전</a>
+                        &nbsp
+                    </li>
+
+
+                    <!-- 페이지 번호 -->
+                    <li th:each="i: ${#numbers.sequence(startPage, endPage)}">
+                        <span th:if="${i == attendDtoPage.pageable.pageNumber+1}"  style="color:red" th:text="${i}"></span>
+                        <a th:unless="${i == attendDtoPage.pageable.pageNumber+1}" sstyle="color:black"
+                           th:href="@{/attend/allAttendancePaging(page=${ i - 1})}" th:text="${i}"></a>
+                        &nbsp
+                    </li>
+                    <li>
+                        <span th:if="${attendDtoPage.totalPages == attendDtoPage.pageable.pageNumber+1}" style="color:darkgrey   ">다음</span>
+                        <a th:unless="${attendDtoPage.totalPages == attendDtoPage.pageable.pageNumber+1}"  style="color:black"
+                           th:href="@{/attend/allAttendancePaging(page=${ attendDtoPage.pageable.pageNumber + 1})}">다음</a>
+                        &nbsp
+                    </li>
+
+                    <li>
+                        <span th:if="${attendDtoPage.totalPages == attendDtoPage.pageable.pageNumber+1}"  style="color:darkgrey   ">END</span>
+                        <a th:unless="${attendDtoPage.totalPages == attendDtoPage.pageable.pageNumber+1}"
+                           style="color:black" th:href="@{/attend/allAttendancePaging(page=${attendDtoPage.totalPages-1})}">END</a>
+                        &nbsp
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

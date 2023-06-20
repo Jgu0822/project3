@@ -1,0 +1,69 @@
+@import url(../common/reset.css);
+@import url(../common/adminHeader.css);
+@import url(../common/leftMenu.css);
+
+.wrap{
+  width: 100%;
+  /* border: 5px solid #000000; */
+  padding-top: 50px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  /* gap: 5px; */
+}
+
+.wrap .weather2{
+  flex: 1;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 30px;
+  padding-left: 330px;
+}
+
+.weather-con{
+  box-shadow: 5px 5px 5px 1px grey;
+}
+
+.weather-con h2{
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5px;
+}
+
+.weather-con .con{ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+}
+
+.box{
+  width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 5px 5px 5px 1px grey;
+    box-sizing: border-box;
+}
+
+.status{
+  display: flex;
+  gap: 15px;
+  font-weight: bold;
+}
+
+.icon2{
+  text-align: center;
+}
+
+.status .description2{
+  font-size: 20px;
+  text-align: center;
+}
+
+.map-con {
+  box-shadow: 5px 5px 5px 1px grey;
+}
